@@ -4,7 +4,7 @@ export const MovieInfoBox = styled.div`
     display: flex;
     margin-top: 15px;
     padding-bottom: 10px;
-    border-bottom: solid 1px #2c2c2c;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 5px;
 `;
 
 export const MovieInfoList = styled.div`
@@ -22,9 +22,4 @@ export const MovieGenresItem = styled.li`
     &:not(:last-child) {
         margin-right: 5px;
     }
-`;
-
-export const MovieAdditionalInfoBox = styled.div`
-    padding-bottom: 10px;
-    border-bottom: solid 1px #2c2c2c;
 `;

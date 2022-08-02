@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link, useParams, Outlet } from "react-router-dom";
 import * as getMoviesApi from "../services/getMovies-api";
-import MovieInfo from "../MovieInfo";
-import { MovieAdditionalInfoBox } from "../MovieInfo/MovieInfo.styled"
+import MovieInfo from "../components/MovieInfo";
+import { MovieAdditionalInfoBox, MovieAdditionalInfoList, MovieAdditionalInfoItem } from "./stylesViews/MovieDetails.styled"
 
 const MovieDetails = () => {
     const { movieId } = useParams('');
@@ -13,21 +13,21 @@ const MovieDetails = () => {
     }, [movieId]);
 
     return (
-        <div>
+        <>
             {movie && <MovieInfo movie={movie} />}
             <MovieAdditionalInfoBox>
                 <h3>Additional information</h3>
-                <ul>
-                    <li>
+                <MovieAdditionalInfoList>
+                    <MovieAdditionalInfoItem>
                         <Link to="cast" >Cast</Link>
-                    </li>
-                    <li>
+                    </MovieAdditionalInfoItem>
+                    <MovieAdditionalInfoItem>
                         <Link to="reviews" >Reviews</Link>
-                    </li>
-                </ul>
+                    </MovieAdditionalInfoItem>
+                </MovieAdditionalInfoList>
             </MovieAdditionalInfoBox>
             <Outlet />
-        </div>
+        </>
     );
 }
 
