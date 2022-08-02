@@ -12,9 +12,7 @@ const Searchbar = ({ onSubmitFom }) => {
                     autoFocus
                     placeholder="Search movies"
                 />
-                <button type="submit">
-                    <label>Search</label>
-                </button>
+                <button type="submit">Search</button>
             </form>
             
         </SearchbarBox>   
