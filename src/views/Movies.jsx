@@ -3,11 +3,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as getMoviesApi from '../services/getMovies-api';
 import Searchbar from '../components/Searchbar/index';
-import { Link, useSearchParams, useLocation } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { MoviesList, MoviesListItem } from './stylesViews/Movies.styled';
 
 const Movies = () => {
-  const location = useLocation();
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams('');
@@ -44,6 +43,8 @@ const Movies = () => {
     setMovies([]);
   };
 
+  console.log(searchParams);
+
   return (
     <div>
       <Searchbar onSubmitFom={handleSubmit} />
@@ -51,12 +52,7 @@ const Movies = () => {
         <MoviesList>
           {movies.map(movie => (
             <MoviesListItem key={movie.id}>
-              <Link
-                to={{
-                  pathname: `${movie.id}`,
-                  state: { from: location },
-                }}
-              >
+              <Link to={`${movie.id}`}>
                 {movie.title ?? movie.original_title}
               </Link>
             </MoviesListItem>

@@ -10,7 +10,7 @@ const Reviews = lazy(() => import('../../views/Reviews.jsx'));
 
 export const App = () => {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<h1>Loading...</h1>}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
