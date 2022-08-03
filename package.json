@@ -2,7 +2,7 @@
   "name": "react-homework-template",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://RomanPyryn.github.io/goit-react-hw-05-movies/",
+  "homepage": "https://romanpyryn.github.io/goit-react-hw-05-movies/",
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
