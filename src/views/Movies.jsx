@@ -3,8 +3,8 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import * as getMoviesApi from '../services/getMovies-api';
 import Searchbar from '../components/Searchbar/index';
-import { Link, useSearchParams } from 'react-router-dom';
-import { MoviesList, MoviesListItem } from './stylesViews/Movies.styled';
+import { useSearchParams } from 'react-router-dom';
+import MoviesList from '../components/MoviesList/';
 
 const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -15,7 +15,6 @@ const Movies = () => {
     const fetchFunc = async searchQuery => {
       try {
         const results = await getMoviesApi.getMovieSearch(searchQuery);
-
         if (results.length === 0) {
           toast.error('Write something else!');
         }
@@ -40,7 +39,7 @@ const Movies = () => {
     }
 
     setSearchQuery(formRequest);
-    setMovies([]);
+    // setMovies([]);
   };
 
   console.log(searchParams);
@@ -48,17 +47,7 @@ const Movies = () => {
   return (
     <div>
       <Searchbar onSubmitFom={handleSubmit} />
-      {movies.length > 0 && (
-        <MoviesList>
-          {movies.map(movie => (
-            <MoviesListItem key={movie.id}>
-              <Link to={`${movie.id}`}>
-                {movie.title ?? movie.original_title}
-              </Link>
-            </MoviesListItem>
-          ))}
-        </MoviesList>
-      )}
+      {movies.length > 0 && <MoviesList onData={movies} />}
       <ToastContainer />
     </div>
   );

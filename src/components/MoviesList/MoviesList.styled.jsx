@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const MoviesList = styled.ul`
+export const MoviesListUl = styled.ul`
   list-style: none;
   font-weight: 500;
 `;
@@ -12,6 +12,12 @@ export const MoviesListItem = styled.li`
 
   & a {
     text-decoration: none;
-    /* color: inherit; */
+    display: flex;
+    align-items: center;
+  }
+
+  & img {
+    margin-right: 10px;
+    border-radius: 50%;
   }
 `;

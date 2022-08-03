@@ -6,7 +6,7 @@ export const MovieAdditionalInfoBox = styled.div`
 `;
 
 export const MovieAdditionalInfoList = styled.ul`
-  list-style: none;
+  /* list-style: none; */
   font-weight: 500;
 `;
 
