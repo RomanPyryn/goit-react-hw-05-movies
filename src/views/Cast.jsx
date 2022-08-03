@@ -28,7 +28,7 @@ const Cast = () => {
                 <h4>No image</h4>
               )}
               <p>{i.name}</p>
-              <p>Character: {i.character}</p>
+              <p>Character: {i.character || 'Unknown'}</p>
             </li>
           ))}
         </ul>
