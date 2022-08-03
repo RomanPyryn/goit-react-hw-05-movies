@@ -8,6 +8,7 @@ const Movies = lazy(() => import('../../views/Movies.jsx'));
 const MovieDetails = lazy(() => import('../../views/MovieDetails.jsx'));
 const Cast = lazy(() => import('../../views/Cast.jsx'));
 const Reviews = lazy(() => import('../../views/Reviews.jsx'));
+const NotFound = lazy(() => import('components/NotFound'));
 
 export const App = () => {
   return (
@@ -20,6 +21,7 @@ export const App = () => {
             <Route path="cast" element={<Cast />} />
             <Route path="reviews" element={<Reviews />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
