@@ -1,15 +1,17 @@
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, useLocation  } from 'react-router-dom';
 import { MoviesListUl, MoviesListItem } from './MoviesList.styled';
 
-const MoviesList = ({ onData, onHomeWay }) => {
+const MoviesList = ({ onData }) => {
   const url = `https://image.tmdb.org/t/p/w300/`;
+  const location = useLocation();
+  console.log(location.pathname);
 
   return (
     <MoviesListUl>
       {onData.map(movie => (
         <MoviesListItem key={movie.id}>
-          <Link to={onHomeWay ? `${onHomeWay}${movie.id}` : `${movie.id}`}>
+          <Link to={location.pathname === '/' ? `movies/${movie.id}` : `${movie.id}`}>
             <img
               src={`${url}${movie.poster_path}`}
               alt={movie.title}
@@ -31,7 +33,6 @@ MoviesList.propTypes = {
     title: PropTypes.string.isRequired,
     original_title: PropTypes.string.isRequired,
   }),
-  onHomeWay: PropTypes.string,
 };
 
 export default MoviesList;

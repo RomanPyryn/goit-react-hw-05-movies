@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div>
       <h1>Tranding today</h1>
-        <MoviesList onData={movies} onHomeWay={"movies/"} />
+        <MoviesList onData={movies} />
     </div>
   );
 };
