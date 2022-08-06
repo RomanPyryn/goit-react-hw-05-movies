@@ -14,7 +14,7 @@ const MoviesList = ({ onData }) => {
             to={
               location.pathname === '/' ? `movies/${movie.id}` : `${movie.id}`
             }
-            state={{ from: location.pathname }}
+            state={{ from: location }}
           >
             <img
               src={`${url}${movie.poster_path}`}

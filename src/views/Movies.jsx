@@ -7,46 +7,36 @@ import { useSearchParams } from 'react-router-dom';
 import MoviesList from '../components/MoviesList/';
 
 const Movies = () => {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchParams] = useSearchParams('');
+  const [query, setQuery] = useState(searchParams.get('query') || '');
   const [movies, setMovies] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams('');
+  
 
   useEffect(() => {
-    const fetchFunc = async searchQuery => {
+    const fetchFunc = async () => {
       try {
-        const results = await getMoviesApi.getMovieSearch(searchQuery);
+        const results = await getMoviesApi.getMovieSearch(query);
         if (results.length === 0) {
           toast.error('Write something else!');
         }
-        setSearchParams({ query: searchQuery });
         setMovies(results);
       } catch (error) {
         console.log(error);
       }
     };
 
-    if (searchQuery !== '') {
-      fetchFunc(searchQuery);
+    if (query !== '') {
+      fetchFunc(query);
     }
-  }, [searchQuery, setSearchParams]);
+  }, [query]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    const formRequest = e.currentTarget.elements.serch.value;
-
-    if (formRequest.trim() === '') {
-      return toast.error('Write something!');
-    }
-
-    setSearchQuery(formRequest);
-    // setMovies([]);
+  const getQuery = query => {
+    setQuery(query);
   };
-
-  console.log(searchParams);
 
   return (
     <div>
-      <Searchbar onSubmitFom={handleSubmit} />
+      <Searchbar onSubmitFom={getQuery} />
       {movies.length > 0 && <MoviesList onData={movies} />}
       <ToastContainer />
     </div>

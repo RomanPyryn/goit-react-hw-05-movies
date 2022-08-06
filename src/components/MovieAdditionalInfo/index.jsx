@@ -23,7 +23,7 @@ const MovieAdditionalInfo = ({onGoBack}) => {
 };
 
 MovieAdditionalInfo.propTypes = {
-  onGoBack: PropTypes.string.isRequired,
+  onGoBack: PropTypes.object.isRequired,
 };
 
 export default MovieAdditionalInfo;
